@@ -7,7 +7,7 @@ import sklearn
 from sklearn.utils import shuffle
 import random
 from sklearn.model_selection import train_test_split
-
+import matplotlib.image as mpimg
 from keras.models import Sequential, Model
 from keras.layers import Flatten, Dense, Lambda, Cropping2D, Dropout
 from keras.layers.convolutional import Convolution2D
@@ -51,7 +51,7 @@ def generator(samples, batch_size=32):
 				# Center images
 				filename = batch_sample[0].split('/')[-1]
 				name = imgdir + filename
-				image = cv2.imread(name)
+				image = mpimg.imread(name)#cv2.imread(name) -- changed to read in RGB
 				angle = float(batch_sample[3])
 				images.append(image)
 				angles.append(angle)
